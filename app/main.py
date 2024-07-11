@@ -4,11 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.endpoints.auth import auth_router
 
 
-router = FastAPI()
+app = FastAPI()
 
 origins = ["http://localhost:3000"]
 
-router.add_middleware(
+app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
@@ -16,9 +16,9 @@ router.add_middleware(
     allow_headers=["*"],
 )
 
-router.include_router(auth_router, prefix="/api")
+app.include_router(auth_router, prefix="/api")
 
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(router, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
