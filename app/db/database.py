@@ -29,10 +29,22 @@ def session_scope():
 
 
 class DataBase:
+
+    # AUTH
     @staticmethod
     def get_users():
         with session_scope() as session:
             return get_users(session)
+
+    @staticmethod
+    def get_user(user_id):
+        with session_scope() as session:
+            return get_user(session, user_id)
+
+    @staticmethod
+    def register_user(user_id, email, first_name, last_name, hashed_password=None, google_id=None):
+        with session_scope() as session:
+            return register_user(session, user_id, email, first_name, last_name, hashed_password, google_id)
 
 
 db = DataBase()

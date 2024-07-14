@@ -12,7 +12,8 @@ class User(Base):
     email = Column(String, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    hashed_password = Column(String, nullable=False)
+    hashed_password = Column(String, nullable=True)
+    google_id = Column(String, nullable=True)
 
     def serialize(self):
         return {
@@ -21,6 +22,7 @@ class User(Base):
             "first_name": str(self.first_name),
             "last_name": str(self.last_name),
             "hashed_password": str(self.hashed_password),
+            "google_id": str(self.google_id)
         }
 
     @staticmethod
@@ -33,5 +35,6 @@ class User(Base):
                 "first_name": str(user.first_name),
                 "last_name": str(user.last_name),
                 "hashed_password": str(user.hashed_password),
+                "google_id": str(user.google_id)
         }
         return serialized_users
