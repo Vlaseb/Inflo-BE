@@ -6,7 +6,7 @@ from app.api.endpoints.auth import auth_router
 
 app = FastAPI()
 
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:3000", "http://localhost:8081"]
 
 app.add_middleware(
     CORSMiddleware,
